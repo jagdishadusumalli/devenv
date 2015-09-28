@@ -31,7 +31,7 @@ ssh -p$port $username@$hostname "PGPASSWORD=$PGPASSWORD pg_dump -i -w -Fc -b -U$
 pp "Copying remote database archive file to local home folder"
 scp -P$port -c blowfish $username@$hostname:$dumpfilename.dump ~/
 
-#ssh -p $Port $Username@$Hostname "rm -f $Directory/$Dumpfilename.sql.gz" >/dev/null 2>&1
+ssh -p $Port $Username@$Hostname "rm -f $Directory/$Dumpfilename.sql.gz" >/dev/null 2>&1
 
 pp "Using pg_restore to dropping existing db/ creating new db / Importing the dump"
 dropdb --if-exists $localdbname
