@@ -29,7 +29,7 @@ ssh -p$port $username@$hostname "PGPASSWORD=$PGPASSWORD pg_dump -i -w -Fc -b -U$
 #-v, --verbose          verbose mode
 
 pp "Copying remote database archive file to local home folder"
-#scp -P$port -c blowfish $username@$hostname:$dumpfilename.dump ~/
+scp -P$port -c blowfish $username@$hostname:$dumpfilename.dump ~/
 
 ssh -p $Port $Username@$Hostname "rm -f $Directory/$Dumpfilename.sql.gz" >/dev/null 2>&1
 
