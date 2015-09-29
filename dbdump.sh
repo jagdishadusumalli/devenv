@@ -21,7 +21,7 @@ dumpfilename=$remotedbname-$(date +"%F")
 #dumpfilename=$remotedbname-$(date +"%F-%T") #withtime
 
 pp "Dumping the remote database..."
-#ssh -p$port $username@$hostname "PGPASSWORD=$PGPASSWORD pg_dump -i -w -Fc -b -U$dbusername -d$remotedbname -f$dumpfilename.dump"
+ssh -p$port $username@$hostname "PGPASSWORD=$PGPASSWORD pg_dump -i -w -Fc -b -U$dbusername -d$remotedbname -f$dumpfilename.dump"
 #O, --no-owner          skip restoration of object ownership in plain-text format
 #w, --no-password       No password prompt
 #Fc, -format=c|d|t|p    output file format (custom, directory, tar, plain text (default))
@@ -29,7 +29,7 @@ pp "Dumping the remote database..."
 #-v, --verbose          verbose mode
 
 pp "Copying remote database archive file to local home folder"
-#scp -P$port -c blowfish $username@$hostname:$dumpfilename.dump ~/
+scp -P$port -c blowfish $username@$hostname:$dumpfilename.dump ~/
 
 #ssh -p $Port $Username@$Hostname "rm -f $Directory/$Dumpfilename.sql.gz" >/dev/null 2>&1
 
