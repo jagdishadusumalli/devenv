@@ -1,11 +1,14 @@
 Host stage*
 Port 2147
 
-Host *
-ServerAliveInterval 30
+Host *qiddle.com
 Port 2146
 IdentityFile ~/.ssh/freewave.pem
 User freewave
+
+Host *
+ServerAliveInterval 30
+
 
 # DO qiddle database freewave
 Host db.qiddle.com 128.199.162.181
