@@ -1,0 +1,35 @@
+Host stage*
+Port 2147
+
+Host *qiddle.com
+Port 2146
+IdentityFile ~/.ssh/freewave.pem
+User freewave
+
+Host *
+ServerAliveInterval 30
+
+
+# DO qiddle database freewave
+Host db.qiddle.com 128.199.162.181
+   HostName 128.199.162.181
+   
+# DO qiddle freewave
+Host qiddle.com
+   HostName 128.199.127.15
+
+# DO stage freewave
+Host stage.qiddle.com
+   HostName 128.199.109.29 
+
+# DO qiddle freewave
+Host stageapi.qiddle.com
+   HostName 128.199.124.145
+
+# DO qiddle freewave
+Host api.qiddle.com
+   HostName 128.199.155.241
+
+# DO yowoto stage freewave
+Host stage.yowoto.com
+   HostName 188.166.250.160
