@@ -1,7 +1,7 @@
 #bin/bash
 USER=$(whoami)
 NOW=$(date +"%Y-%m-%d_%H-%M")
-EMAIL_SUBJECT=$(the stack versions of $USER as of $NOW) 
+EMAIL_SUBJECT="the stack-versions of $USER as of $NOW"
 TO_ADDRESS="dipanjan@qiddle.com"
 bold=$(tput bold)
 ul=$(tput smul)
