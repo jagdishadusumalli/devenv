@@ -16,6 +16,7 @@ port=2146
 remotedbname=qiddle_production
 dbusername=freewave
 PGPASSWORD=321fr33wav3
+
 localdbname=qiddle_development
 dumpfilename=$remotedbname-$(date +"%F")
 #dumpfilename=$remotedbname-$(date +"%F-%T") #withtime
