@@ -19,11 +19,16 @@ npm -v
 pretty_print "Showing installed bower version info : " 
 bower -version
 
-pretty_print "Showing installed Cordova Platform info : "
-cordova platform version android
+pretty_print "Showing installed Cordova version : "
+cordova version
+
+pretty_print "Showing installed Cordova Platforms (IOS, Android) and their versions : "
+cordova platform version
 
 pretty_print "Showing installed brew config info : "
 brew config
+
+npm -g list cordova bower ionic gulp
 
 pretty_print "Showing installed postgres version info: " 
 psql --version

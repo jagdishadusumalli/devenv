@@ -17,7 +17,7 @@ pretty_print "Upgrading npm to latest..."
   npm install -g npm@latest
 
 pretty_print "Installing Grunt..."
-  npm install -g grunt-cli
+  #npm install -g grunt-cli
 
 # pretty_print "Installing Composer..."
 #   brew update
@@ -37,3 +37,6 @@ pretty_print "Installing cordova..."
 
 pretty_print "Installing ios-deploy..."
   npm install -g ios-deploy
+
+pretty_print "Installing ios-deploy..."
+  npm install -g ios-sim

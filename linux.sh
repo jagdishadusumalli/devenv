@@ -27,12 +27,14 @@ ________________________________________________________________________________
 # clean up unwanted apps and update upgrade
 ############################################################
 printf "\n\n====== Cleaning up unwanted apps and reduce upgrades size ============ \n\n\n"
-sudo apt-get -y autoremove --purge thunderbird empathy indicator-messages telepathy-indicator
+sudo apt-get -y autoremove --purge thunderbird empathy gnome-sudoku gnome-mahjongg gnome-mines aisleriot indicator-messages telepathy-indicator
 sudo apt-get -y autoremove --purge unity-lens-shopping unity-lens-music unity-lens-photos unity-lens-gwibber unity-lens-video
-sudo apt-get -y autoremove --purge libreoffice*
+#sudo apt-get -y autoremove --purge libreoffice*
 printf "\n\n====== Runnig autoclean and autoremove  ============ \n\n\n"
 #sudo apt-get -y autoclean
 #sudo apt-get -y autoremove
+#dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge
+
 
 # show all startup applications
 sudo sed -i "s/NoDisplay=true/NoDisplay=false/g" /etc/xdg/autostart/*.desktop
@@ -64,9 +66,9 @@ sudo sh -c 'add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_relea
 # Adding all PPA repos for ror server apps
 ############################################################
 printf "\n\n====== apt-add-repository installing  ============ \n\n\n"
-sudo apt-get -y install software-properties-common
-sudo apt-get -y install python-software-properties
-sudo apt-get -y update
+#sudo apt-get -y install software-properties-common
+#sudo apt-get -y install python-software-properties
+#sudo apt-get -y update
 
 printf "\n\n====== Adding PPA Repositories for ROR Server n Development   ============ \n\n\n"
 printf "\n\n====== NGINX repository adding  ============ \n\n\n"
@@ -94,13 +96,13 @@ sudo apt-get -y autoremove
 # Installing server applications
 ############################################################
 printf "\n\n====== DEV ESSENTIALS installing  ============ \n\n\n"
-sudo apt-get -y install build-essential git vim curl tmux zsh htop tree s3cmd nmap 
+sudo apt-get -y install build-essential git-core vim curl tmux zsh htop tree s3cmd nmap 
 printf "\n\n====== GENERAL APPDEV DEPENDENCIES installing  ============ \n\n\n"
 sudo apt-get -y install redis-server imagemagick libmagickcore-dev libmagickwand-dev libqt4-dev 
 printf "\n\n====== NGINX and dep libs installing  ============ \n\n\n"
 sudo apt-get -y install libcurl4-openssl-dev nginx
 printf "\n\n====== POSTGRESQL installing  ============ \n\n\n"
-sudo apt-get -y install postgresql-9.4 postgresql-client-9.4 libpq-dev postgresql-contrib-9.4
+sudo apt-get -y install postgresql-9.5 postgresql-client-9.5 libpq-dev postgresql-contrib-9.5
 printf "\n\n====== PostgreSQL User Setup (root/root123) ============ \n\n\n"
 sudo su postgres <<-'EOF'
 createuser -d -e -E -l -r -s root
@@ -108,10 +110,10 @@ psql -c "ALTER USER root with password 'root'"
 EOF
 
 printf "\n\n====== RBENV or RVM requirements installing  ============ \n\n\n"
-sudo apt-get -y install zlib1g-dev libssl-dev libreadline-dev tklib 
+sudo apt-get -y install zlib1g-dev libssl-dev libreadline-dev tklib libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 
-#Installing Nodejs 0.12
-\curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
+#Installing Nodejs 5.0.0
+\curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 sudo apt-get -y install nodejs
 sudo npm install -g npm@latest
 
@@ -129,11 +131,11 @@ printf "bundler \nrails"  >> ~/.rbenv/default-gems
 
 ###Manual Installations
 ################################################################
-# source ~/.bashrc
-# printf "\n\n======  Ruby 2.2.1 with gems Installing   ============ \n\n\n"
-# rbenv install 2.2.1
+ source ~/.bashrc
+ printf "\n\n======  Ruby 2.2.3 with gems Installing   ============ \n\n\n"
+ rbenv install 2.2.3
 
-#printf "install: --no-document \nupdate: --no-document" > ~/.gemrc
+printf "install: --no-document \nupdate: --no-document" > ~/.gemrc
 #printf "\n\n====== showing ruby and rubygems version  ============ \n\n\n"
 #ruby -v
 #gem --version
@@ -143,10 +145,10 @@ printf "bundler \nrails"  >> ~/.rbenv/default-gems
 #gem install rails
 #source ~/.bashrc
 
-#printf "\n\n====== ohmyzsh installing  ============ \n\n\n"
-#\curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-#printf "\n\n====== Changing shell to zsh  ============ \n\n\n"
-#sudo chsh -s $(which zsh) $(whoami)
+printf "\n\n====== ohmyzsh installing  ============ \n\n\n"
+\curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+printf "\n\n====== Changing shell to zsh  ============ \n\n\n"
+sudo chsh -s $(which zsh) $(whoami)
 
 # Installing Desktop applications
 ############################################################
@@ -177,8 +179,8 @@ sudo apt-fast -y install vlc ubuntu-restricted-extras
 #sudo apt-get -y install inkscape
 #printf "\n\n====== Virtualbox 4 installing  ============ \n\n\n"
 #sudo apt-get -y install virtualbox
-#printf "\n\n====== ubuntu-restricted-extras codecs installing  ============ \n\n\n"
-#sudo apt- -y install ubuntu-restricted-extras
+printf "\n\n====== ubuntu-restricted-extras codecs installing  ============ \n\n\n"
+sudo apt- -y install ubuntu-restricted-extras
 
 # Installing ATTENDED Desktop applications 
 ############################################################
@@ -199,7 +201,7 @@ sudo apt-get -y autoremove
 sudo apt-get -y update
 sudo apt-get -y dist-upgrade
 
-printf "\n\n====== Intel Graphics Drivers Repo adding  ============ \n\n\n"
+#printf "\n\n====== Intel Graphics Drivers Repo adding  ============ \n\n\n"
 #sudo sh -c 'wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg -O - | apt-key add -'
 #sudo sh -c 'wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-2 -O - | apt-key add -'
 #sudo sh -c 'echo "deb https://download.01.org/gfx/ubuntu/13.04/main Ubuntu 13.04" >> /etc/apt/sources.list.d/intel-graphics.list'
