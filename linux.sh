@@ -95,6 +95,7 @@ sudo apt-get -y autoremove
 
 # Installing server applications
 ############################################################
+
 printf "\n\n====== DEV ESSENTIALS installing  ============ \n\n\n"
 sudo apt-get -y install build-essential git-core vim curl tmux zsh htop tree s3cmd nmap 
 printf "\n\n====== GENERAL APPDEV DEPENDENCIES installing  ============ \n\n\n"
@@ -111,6 +112,9 @@ EOF
 
 printf "\n\n====== RBENV or RVM requirements installing  ============ \n\n\n"
 sudo apt-get -y install zlib1g-dev libssl-dev libreadline-dev tklib libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+
+printf "\n\n====== RUBY BUILD EXTRA requirements installing  ============ \n\n\n"
+sudo apt-get -y install autoconf bison libreadline6-dev libncurses5-dev libgdbm3 libgdbm-dev
 
 #Installing Nodejs 5.0.0
 \curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -

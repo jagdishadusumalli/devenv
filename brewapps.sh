@@ -26,7 +26,7 @@ pretty_print "Installing GNU find, locate, updatedb and xargs..."
   brew install findutils
 
 pretty_print "Installing Bash 4"
-  brew install bash
+  brew install bash libyaml libffi
 
 # OpenSSL linking
 pretty_print "Installing and linking OpenSSL..."

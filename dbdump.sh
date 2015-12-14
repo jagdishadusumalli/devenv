@@ -21,7 +21,7 @@ localdbname=qiddle_development
 dumpfilename=$remotedbname-$(date +"%F")
 #dumpfilename=$remotedbname-$(date +"%F-%T") #withtime
 
-pp "Dumping the remote database..."
+pp "Dumping the remote database... Enter Server password"
 ssh -p$port $username@$hostname "PGPASSWORD=$PGPASSWORD pg_dump -i -w -Fc -b -U$dbusername -d$remotedbname -f$dumpfilename.dump"
 #O, --no-owner          skip restoration of object ownership in plain-text format
 #w, --no-password       No password prompt
@@ -29,7 +29,7 @@ ssh -p$port $username@$hostname "PGPASSWORD=$PGPASSWORD pg_dump -i -w -Fc -b -U$
 #b, --blobs             include large objects in dump
 #-v, --verbose          verbose mode
 
-pp "Copying remote database archive file to local home folder"
+pp "Copying remote database archive file to local home folder...Enter Server password"
 scp -P$port -c blowfish $username@$hostname:$dumpfilename.dump ~/
 
 ssh -p $Port $Username@$Hostname "rm -f $Directory/$Dumpfilename.sql.gz" >/dev/null 2>&1
